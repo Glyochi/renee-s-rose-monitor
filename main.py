@@ -19,7 +19,7 @@ cv2.namedWindow("preview")
 
 CAMERA = None
 def initialize_camera():
-    cam = cv2.VideoCapture(0, cv2.CAP_MSMF)
+    cam = cv2.VideoCapture(1, cv2.CAP_MSMF)
     #cam.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('m', 'j', 'p', 'g'))
     cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
     cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
