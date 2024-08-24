@@ -1,4 +1,5 @@
 import datetime
+import os
 
 average_frame_time_ns_array = []
 average_frame_time_ns_max_count = 30
@@ -26,3 +27,19 @@ def get_image_file_name(image_index: int):
     file_name = f"{str(image_index).rjust(index_string_width, "0")}_{date_time}.png"
 
     return file_name
+
+
+# Make image directories
+def get_latest_image_index(image_dir: str):
+    images = [f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f))]
+
+    if len(images) == 0:
+        return 0
+    latest_image = images[-1]
+    temp_array = latest_image.split("_")
+    temp_str = temp_array[0]
+    while len(temp_str) > 0 and temp_str[0] == "0":
+        temp_str = temp_str[1:]
+
+    latest_index = int(temp_array[0]) + 1
+    return latest_index

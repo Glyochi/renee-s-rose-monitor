@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, send_from_directory
+from flask import Flask, request, send_from_directory, make_response, jsonify
 from flask_socketio import SocketIO
 import threading
 from PIL import Image
@@ -30,6 +30,15 @@ class Realtime_Server:
                 return send_from_directory(self.__app.static_folder, path)
             else:
                 return send_from_directory(self.__app.static_folder, 'index.html')
+
+        @self.__app.route('/health')
+        def on_health():
+            data = {
+                'health': 'Server is up'
+            }
+            respone = jsonify(data)
+            respone.headers.add("Access-Control-Allow-Origin", "*")
+            return make_response(respone, 200)
 
     def __setup_sockets(self):
         # Websocket

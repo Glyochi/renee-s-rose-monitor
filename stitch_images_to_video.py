@@ -17,7 +17,7 @@ video_height, video_width, _ = temp_image.shape
 video_path = os.path.join(os.getcwd(), "video.mp4")
 
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-video = cv2.VideoWriter(video_path, -1, 30, (video_width, video_height))
+video = cv2.VideoWriter(video_path, -1, 20, (video_width, video_height))
 
 for path in image_paths:
 
